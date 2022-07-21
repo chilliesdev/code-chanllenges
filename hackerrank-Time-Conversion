@@ -1,0 +1,19 @@
+function timeConversion(s) {
+    // Write your code here
+    
+    if (!s || s.length === 0) return 0;
+    
+    let timeArr = s.split(":");
+    let lastIndex = timeArr.length - 1; 
+    let am = s.includes("AM");
+    
+    if (timeArr[0] == "12" && am){
+        timeArr[0] = "00";
+    } else if (timeArr[0] != "12" && !am){
+        timeArr[0] = parseInt(timeArr[0]) + 12;
+    }
+    
+    timeArr[lastIndex] = timeArr[lastIndex].replace(/(AM)|(PM)/g, "");
+    
+    return timeArr.join(":")
+}
